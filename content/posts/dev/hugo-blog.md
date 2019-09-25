@@ -1,7 +1,6 @@
 ---
-title: "Hugo Blog"
+title: "hugo로 블로그 만들고 utterances로 댓글추가 및 github로 호스팅하기 정리"
 date: 2019-09-25T15:56:56+09:00
-draft: false
 ---
 
 # Hugo란
@@ -71,13 +70,13 @@ theme = "hugo-dusk"
 # 댓글 설정
 
 #### github repo 생성 및 댓글 기능 사용전 설정
-	댓글은 utterance를 사용한다. utterance는 깃허브의 issue를 이용하여 댓글을 만들어주는데 utterance app이 나의 repo에 접근이 가능해야하므로 먼저 깃허브 저장소를 만들고 utterance app에 권한을 줘야한다.
+	댓글은 utterances를 사용한다. utterance는 깃허브의 issue를 이용하여 댓글을 만들어주는데 utterances app이 나의 repo에 접근이 가능해야하므로 먼저 깃허브 저장소를 만들고 utterances app에 권한을 줘야한다.
 
-[utterance 설명](https://utteranc.es/?installation_id=2153892&setup_action=install)
+[utterances 설명](https://utteranc.es/?installation_id=2153892&setup_action=install)
 
 
 1. repo 생성 [boojongmin/hugo-blog](https://github.com/boojongmin/hugo-blog) repo
-1. 아래의 링크에서 utterance app 권한 부여
+1. 아래의 링크에서 utterances app 권한 부여
 	- [https://github.com/apps/utterances](https://github.com/apps/utterances)
 	- 필자의 경우는 boojongmin/hugo-blog repo에만 권한을 부여함.
 
