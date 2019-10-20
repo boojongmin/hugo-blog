@@ -87,19 +87,21 @@ application.properties 삭제 후 application.yml 생성.
 - [https://getbootstrap.com/docs/4.3/getting-started/introduction/][https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 - [https://getbootstrap.com/docs/4.3/layout/overview/](https://getbootstrap.com/docs/4.3/layout/overview/)
 - [emmet](https://docs.emmet.io
-  - ```
+     ```
 table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=col]>{password}))+(tbody>tr>td[scope=row]+td+td)
 
-```) 
+``` 
 - th[scope=col] [scope attribute](https://webisfree.com/2015-10-12/[웹접근성]-table에서-scope-속성-사용하기)
 - [thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html)
 
-#### thmeleaf 사용법
+#### thymeleaf 사용법
 [thymeleaf layout](https://www.thymeleaf.org/doc/articles/layouts.html)
 [Spring MVC and Thmeleaf](https://www.thymeleaf.org/doc/articles/springmvcaccessdata.html)
 
 
 #### spring-data-common
+[reference](https://docs.spring.io/spring-data/data-commons/docs/current/reference/html/#reference)
+
 [maven repo](https://search.maven.org/artifact/org.springframework.data/spring-data-commons/2.2.0.RELEASE/jar)
 
 
@@ -153,17 +155,55 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 [baeldung](https://www.baeldung.com/spring-security-remember-me)
 
 
+#### antMatcher
+[spring api](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html)
 
 
+#### mysql date type
+[reference](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html)
 
-
-
-
-
-
-
-
+#### jdbc reference & jdbc type mapping
+[reference](https://docs.oracle.com/javadb/10.8.3.0/ref/crefjdbc12657.html)
+[type mapping](https://docs.oracle.com/javadb/10.8.3.0/ref/rrefjdbc20377.html)
 
 
 #### logging level
 [Log Levels](https://docs.spring.io/spring-boot/docs/2.2.0.M6/reference/html/spring-boot-features.html#boot-features-custom-log-levels)
+
+
+
+## Day 3
+
+#### Jpa
+[jsr-220](https://www.jcp.org/en/jsr/detail?id=220)
+
+[jsr-220-pdf](https://download.oracle.com/otn-pub/jcp/ejb-3_0-fr-eval-oth-JSpec/ejb-3_0-fr-spec-persistence.pdf?AuthParam=1571017719_84c71fe0a9823656a77b492e2e8b9aa5)
+
+[entity state](https://docs.jboss.org/hibernate/entitymanager/3.6/reference/en/html/objectstate.html#d0e1030)
+
+[Entity Manager](https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html)
+
+[springboot jpa log 설정](https://www.popit.kr/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8-auto-configuration%EA%B3%BC-jpa%ED%95%98%EC%9D%B4%EB%B2%84%EB%84%A4%EC%9D%B4%ED%8A%B8-sql%EB%AC%B8-%EB%A1%9C%EA%B9%85)
+
+[hibernate criteria api](https://docs.oracle.com/javaee/6/api/javax/persistence/criteria/package-summary.html)
+
+[jpql, criteia](https://www.objectdb.com/java/jpa/query/jpql/where)
+
+[jpa query method](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods)
+
+[jpa @query](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query)
+
+[security mvc-authentication-principal](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#mvc-authentication-principal)
+
+
+```
+## 에러처리
+
+### The bean 'helloAccountRepository', defined in null, could not be registered. A bean with that name has already been defined in null and overriding is disabled.
+## https://stackoverflow.com/questions/53723303/springboot-beandefinitionoverrideexception-invalid-bean-definition/53723731
+## 'org.springframework.boot:spring-boot-starter-data-jdbc' <- 이 의존성 때문에 에러가 발생
+#  main:
+#    allow-bean-definition-overriding: true
+
+
+```

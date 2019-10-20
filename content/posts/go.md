@@ -1,3 +1,9 @@
+---
+title: "Go lang"
+date: 2019-09-27T08:50:35+09:00
+draft: true
+---
+
 # go란
 
 # go 설치
