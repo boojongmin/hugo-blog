@@ -143,6 +143,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 #### spring security
 [Security](https://docs.spring.io/spring-boot/docs/2.2.0.M6/reference/html/spring-boot-features.html#boot-features-security)
 
+[Security 설명 한글](https://galid1.tistory.com/576?category=791456)
+
 #### DelegatingPasswordEncoder
 [DelegatingPasswordEncoder](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/crypto/password/DelegatingPasswordEncoder.html)
 
@@ -207,3 +209,52 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 
 ```
+
+## Day 4
+#### Vue
+
+[google trends react vs vue](https://trends.google.com/trends/explore?cat=733&date=today%205-y&q=vuejs,reactjs)
+
+[vue cli router login example](https://medium.com/@zitko/structuring-a-vue-project-authentication-87032e5bfe16)
+
+[vscode debugger](https://code.visualstudio.com/docs/editor/debugging)
+
+[vscode debugger vuejs recipes](https://github.com/Microsoft/VSCode-recipes/tree/master/vuejs-cli)
+
+#### oauth
+[google api credentials](https://console.developers.google.com/apis/credentials)
+
+[google signin javascript](https://developers.google.com/identity/sign-in/web/reference)
+
+[vue-google-oauth2](https://www.npmjs.com/package/vue-google-oauth2)
+
+[vue-google-oauth2 한글 블로그](https://medium.com/@jeongwooahn/vue-js-구글로그인-플러그인-vue-google-oauth2-184c2859c78a)
+
+[spring-boot-oauth2 reference](https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/html/spring-boot-features.html#boot-features-security-oauth2)
+
+[spring-boot-oauth2 tutorial](https://spring.io/guides/tutorials/spring-boot-oauth2/)
+
+[spring-security-core oauth2](https://docs.spring.io/spring-security/site/docs/5.2.0.RELEASE/reference/htmlsingle/#oauth2)
+
+[spring-security oauth baeldung](https://www.baeldung.com/spring-security-5-oauth2-login)
+
+[kakao talk oauth](https://galid1.tistory.com/582)
+
+[spring oauth jwt](https://www.baeldung.com/spring-security-oauth-jwt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
