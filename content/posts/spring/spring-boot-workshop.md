@@ -222,13 +222,18 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 [vscode debugger vuejs recipes](https://github.com/Microsoft/VSCode-recipes/tree/master/vuejs-cli)
 
 #### oauth
+
 [google api credentials](https://console.developers.google.com/apis/credentials)
 
 [google signin javascript](https://developers.google.com/identity/sign-in/web/reference)
 
+[facebook sigin oauth2 setting](https://developers.facebook.com/apps/2475606369171543/fb-login/settings/)
+
 [vue-google-oauth2](https://www.npmjs.com/package/vue-google-oauth2)
 
 [vue-google-oauth2 한글 블로그](https://medium.com/@jeongwooahn/vue-js-구글로그인-플러그인-vue-google-oauth2-184c2859c78a)
+
+[spring security oauth2](https://projects.spring.io/spring-security-oauth/docs/oauth2.html)
 
 [spring-boot-oauth2 reference](https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/html/spring-boot-features.html#boot-features-security-oauth2)
 
@@ -236,14 +241,92 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 [spring-security-core oauth2](https://docs.spring.io/spring-security/site/docs/5.2.0.RELEASE/reference/htmlsingle/#oauth2)
 
+[spring-security-boot oauth2](https://docs.spring.io/spring-security-oauth2-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
+
 [spring-security oauth baeldung](https://www.baeldung.com/spring-security-5-oauth2-login)
+
+[spring-security-boot oauth](https://docs.spring.io/spring-security-oauth2-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
+
+[spring-security oauth series](https://www.callicoder.com/series/spring-security-react/)
 
 [kakao talk oauth](https://galid1.tistory.com/582)
 
 [spring oauth jwt](https://www.baeldung.com/spring-security-oauth-jwt)
 
+[spring security autoconfigration 사용시 주의사항](https://hue9010.github.io/spring/OAuth2/)
+
+[spring security 설명 한글 블로그](https://coding-start.tistory.com/153)
+
+[spring security 한글 블로그 - good](https://flyburi.com/584)
+
+[spring oauth2 한글 설명 블로그](https://coding-start.tistory.com/158?category=738631)
+
+[spring oauth2 소셜인증](https://www.popit.kr/spring-security-oauth2-소셜-인증/)
+
+[spring security oauth2 소셜인증 데이터베이스 저장](https://www.popit.kr/spring-security-oauth2-%EC%86%8C%EC%85%9C-%EC%9D%B8%EC%A6%9D-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%A0%80%EC%9E%A5/)
 
 
+```
+google>
+
+http://localhost:8080/login/oauth2/code/google?state=eITp9RCxoz7xP0xgxucjSL6fT2__4no2b6jB0RZfX4w%3D&code=4/sgErYlPy6J4LbWwg2m7sLqVY5ej2tifxfqkzOqc3TtIcPkFssJ__9q6SYqF5EIVMBU7Nw8wMHKs3PmyhmbtsNIQ&scope=email+profile+openid+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email&authuser=0&hd=neofect.com&session_state=8ae2a5540374f7a6d3100e15bb09c0116b42edc6..2576&prompt=none
+
+facebook> 
+
+http://localhost:8080/login/oauth2/code/facebook?code=AQD8N7WCPaWvr4r_fBho3ZU7B0_4a93NeXKZwyz1QyRlqCUGkisEw1y2JozF6KJqkeCP6I9QeB3u0tsfRXazjgON_uw4qbPSM2_S0U6sZ3N8l2tp50Rwmj48vszeWbQU7YLrxtBGEbGrXyNCJrkPgwP2XNvofX9zexqZ7cv7x-EfiFgx3ISalVWTFTG15E2euxvjYMyJvnGslXPUhk55YjTYskn6akVMihLLJJZoUZq8QqoeSwbvzgSfLQVxWkh91PdvjsV4lPCnwcYJGpOIbbwd1d05XresUtqu_y4krA-TX4vFNs7XOhH59cWlfERNVzcr42gVD2M2GMZJRGJQ2t2a&state=5NZPtpwrjPMjzuU1oQDo2JnD6gSI167EV1kUpE7oy28%3D#_=_
+
+
+```
+
+```
+
+  CommonOAuth2Provider
+
+  OAuth2ClientAutoConfiguration
+
+  springSecurityFilterChain
+
+  DefaultSecurityFilterChain
+
+  FilterChainProxy.getFilters
+
+  OAuth2ClientRegistrationRepositoryConfiguration - InMemoryClientRegistrationRepository
+  
+  OAuth2WebSecurityConfiguration
+
+```
+
+oauth 내부 동작
+```
+OAuth2LoginAuthenticationFilter
+- attemptAuthentication 
+
+  OidcAuthorizationCodeAuthenticationProvider
+
+  DefaultAuthorizationCodeTokenResponseClient.getTokenResponse <- access token을 가져옴.
+
+
+AbstractAuthenticationProcessingFiltera
+- successfulAuthentication <- SecurityContextHolder.getContext().setAuthentication(authResult);
+  authResult: OAuth2AuthenticationToken
+
+
+```
+
+[참고 Spring security DebugFilter](https://stackoverflow.com/questions/30855252/how-do-i-enable-logging-for-spring-security/41823422)
+
+
+
+##### authentication, authorization
+
+[참조 블로그](https://velog.io/@ground4ekd/web-authentication)
+
+[참조 블로그](https://umbum.tistory.com/367)
+
+[authentication vs authorization](https://www.google.com/search?client=firefox-b-d&q=authentication+authorization)
+
+
+처음에 oauth 설정을 보여주고 이건 authentication만 하고 authorization은 spring security가 세션을 만들고 security가 해주는것을 설명
 
 
 
