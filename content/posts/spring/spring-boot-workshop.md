@@ -241,11 +241,13 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 [spring-security-core oauth2](https://docs.spring.io/spring-security/site/docs/5.2.0.RELEASE/reference/htmlsingle/#oauth2)
 
-[spring-security-boot oauth2](https://docs.spring.io/spring-security-oauth2-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
+[* spring-security-boot oauth2 *](https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/)
+
+[springboot2 oauth2 authorization/resource server](https://howtodoinjava.com/spring-boot2/oauth2-auth-server/)
+
+[OAuth 2 Developers Guide](https://projects.spring.io/spring-security-oauth/docs/oauth2.html)
 
 [spring-security oauth baeldung](https://www.baeldung.com/spring-security-5-oauth2-login)
-
-[spring-security-boot oauth](https://docs.spring.io/spring-security-oauth2-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
 
 [spring-security oauth series](https://www.callicoder.com/series/spring-security-react/)
 
@@ -265,6 +267,15 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 [spring security oauth2 소셜인증 데이터베이스 저장](https://www.popit.kr/spring-security-oauth2-%EC%86%8C%EC%85%9C-%EC%9D%B8%EC%A6%9D-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%A0%80%EC%9E%A5/)
 
+[secure-reset-api-using-spring-security-aouth2(예제괜찮음)](http://sivatechlab.com/secure-rest-api-using-spring-security-oauth2-part-3/)
+
+[jwt token verify claims - baeldung](https://www.baeldung.com/spring-security-oauth-2-verify-claims)
+
+[spring security oauth2 and jwt](http://sivatechlab.com/secure-rest-api-using-spring-security-oauth2-jwt/)
+
+
+
+[spring security filter chain - baeldung](https://www.baeldung.com/spring-security-registered-filters)
 
 ```
 google>
@@ -306,14 +317,23 @@ OAuth2LoginAuthenticationFilter
   DefaultAuthorizationCodeTokenResponseClient.getTokenResponse <- access token을 가져옴.
 
 
-AbstractAuthenticationProcessingFiltera
+AbstractAuthenticationProcessingFilter
 - successfulAuthentication <- SecurityContextHolder.getContext().setAuthentication(authResult);
   authResult: OAuth2AuthenticationToken
 
 
 ```
 
+security
+```
+FilterChainProxy.getFilters <- matcher랑 filter를 비교하는 로직이 있음.
+```
+
+[읽어볼것!! - rfc를 잘 정리했음. ](https://medium.com/@darutk/spring-oauth-2-0-openid-connect-3341a6ed1f92)
+
 [참고 Spring security DebugFilter](https://stackoverflow.com/questions/30855252/how-do-i-enable-logging-for-spring-security/41823422)
+
+[spring security 파헤치기(구조,인증과정,설정...)](https://sjh836.tistory.com/165)
 
 
 
@@ -329,14 +349,16 @@ AbstractAuthenticationProcessingFiltera
 처음에 oauth 설정을 보여주고 이건 authentication만 하고 authorization은 spring security가 세션을 만들고 security가 해주는것을 설명
 
 
+[tip: basic auth가 아닌 body에 client정보 credential을 담는 방법](https://stackoverflow.com/questions/27864295/how-to-use-oauth2resttemplate)
+
+#### oauthrization server
+[build oauth 2.0 authorization server with spring](https://dzone.com/articles/build-an-oauth-20-authorization-server-with-spring)
 
 
 
+#### oauth client
 
-
-
-
-
+[참조 한글 블로그](https://cnpnote.tistory.com/entry/SPRING-OAuth2RestTemplate을-사용하는-방법)
 
 
 
