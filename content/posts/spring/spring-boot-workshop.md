@@ -187,6 +187,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 [springboot jpa log 설정](https://www.popit.kr/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8-auto-configuration%EA%B3%BC-jpa%ED%95%98%EC%9D%B4%EB%B2%84%EB%84%A4%EC%9D%B4%ED%8A%B8-sql%EB%AC%B8-%EB%A1%9C%EA%B9%85)
 
+[hibernate config](https://docs.jboss.org/hibernate/orm/5.0/manual/en-US/html/ch03.html)
+
 [hibernate criteria api](https://docs.oracle.com/javaee/6/api/javax/persistence/criteria/package-summary.html)
 
 [jpql, criteia](https://www.objectdb.com/java/jpa/query/jpql/where)
@@ -253,6 +255,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 [kakao talk oauth](https://galid1.tistory.com/582)
 
+[spring security oauth 정리 외국블로그](https://springbootdev.com/category/spring-security-oauth2/)
+
 [spring oauth jwt](https://www.baeldung.com/spring-security-oauth-jwt)
 
 [spring security autoconfigration 사용시 주의사항](https://hue9010.github.io/spring/OAuth2/)
@@ -276,6 +280,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 
 [spring security filter chain - baeldung](https://www.baeldung.com/spring-security-registered-filters)
+
+[spring security test](https://springbootdev.com/2018/02/22/spring-boot-test-writing-unit-tests-for-the-controller-layers-with-webmvctest/#more-4536)
 
 ```
 google>
