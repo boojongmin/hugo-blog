@@ -31,3 +31,4 @@ date: 2019-10-11T09:57:14+09:00
 # 즐겨찾기
 - [springboot common application properties - 2.1.9](https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/common-application-properties.html)
 - [springboot common application properties](https://docs.spring.io/spring-boot/docs/2.2.0.RC1/reference/html/appendix-application-properties.html#common-application-properties) 
+- [springboot-starters](https://docs.spring.io/spring-boot/docs/2.2.1.RELEASE/reference/html/using-spring-boot.html#using-boot-starter)
