@@ -177,6 +177,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 ## Day 3
 
 #### Jpa
+[intellij jpa 기능](https://www.popit.kr/intellij%EC%97%90%EC%84%9C-%EC%BD%94%EB%93%9C-%ED%95%9C-%EC%A4%84-%EC%95%88-%EC%A7%9C%EA%B3%A0-jpql-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/)
+
 [jsr-220](https://www.jcp.org/en/jsr/detail?id=220)
 
 [jsr-220-pdf](https://download.oracle.com/otn-pub/jcp/ejb-3_0-fr-eval-oth-JSpec/ejb-3_0-fr-spec-persistence.pdf?AuthParam=1571017719_84c71fe0a9823656a77b492e2e8b9aa5)
