@@ -199,6 +199,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 
 [jpa @query](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query)
 
+[gradle 5query dsl 설정](https://www.dummy.pe.kr/1750)
+
 [security mvc-authentication-principal](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#mvc-authentication-principal)
 
 
@@ -226,6 +228,8 @@ table.table>(thead>tr>(th[scope=col]>{#})+(th[scope=col]>{username})+(th[scope=c
 [vscode debugger vuejs recipes](https://github.com/Microsoft/VSCode-recipes/tree/master/vuejs-cli)
 
 #### oauth
+
+[oauth2.0 jwt 샘플 괜찮음.](https://github.com/Seulki-You/OAuth2-Server)
 
 [google api credentials](https://console.developers.google.com/apis/credentials)
 
