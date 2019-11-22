@@ -374,4 +374,7 @@ FilterChainProxy.getFilters <- matcher랑 filter를 비교하는 로직이 있�
 
 
 
-
+#### cache
+[jpa cache hit](https://vladmihalcea.com/hibernate-statistics/)
+[hibernate ehcash](https://www.baeldung.com/hibernate-second-level-cache)
+[ehcach jmx](https://www.ehcache.org/documentation/2.7/operations/jmx.html)
