@@ -378,3 +378,21 @@ FilterChainProxy.getFilters <- matcher랑 filter를 비교하는 로직이 있�
 [jpa cache hit](https://vladmihalcea.com/hibernate-statistics/)
 [hibernate ehcash](https://www.baeldung.com/hibernate-second-level-cache)
 [ehcach jmx](https://www.ehcache.org/documentation/2.7/operations/jmx.html)
+
+[jpa second cache by redis](https://dzone.com/articles/caching-in-hibernate-with-redis)
+
+### actuator
+[manual](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready)
+
+### profile 설정
+#### 환경 세팅
+##### aws ec2에 mysql 설치
+https://n1tjrgns.tistory.com/129
+
+mysql -u root -p
+create user '{id}'@'%' identified by '{password}';
+grant all privileges on *.* to '{id}'@'%';
+create database board;
+
+###### redis 설치 
+https://medium.com/@ss.shawnshi/how-to-install-redis-on-ec2-server-for-fast-in-memory-database-f30c3ef8c35e
