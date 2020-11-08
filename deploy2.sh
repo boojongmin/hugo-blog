@@ -13,7 +13,7 @@ hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 # Go To Public folder
 cd public
 
-echo "blog.boojongmin.com" > CNAME
+#echo "blog.boojongmin.com" > CNAME
 
 # Add changes to git.
 git init
