@@ -12,10 +12,10 @@ draft: false
 
 > io.netty.channel.nio.NioEventLoop
 
-![](../../2020-11-08-23-21-10.png)
+![](../2020-11-08-23-21-10.png)
 
 
-![](../../2020-11-08-23-22-25.png)
+![](../2020-11-08-23-22-25.png)
 
 NioEventLoop는 독립된 Thread로 실행되므로 run메서드가 최초 동작. for(;;)에서 보면 알 수 있듯이 무한 loop를 돌리고 client 요청이 오면 저 selectCnt에 값이 1 증가함.
 
