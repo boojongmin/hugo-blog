@@ -30,7 +30,7 @@ NioEventLoop는 독립된 Thread로 실행되므로 run메서드가 최초 동�
 ![](../2020-11-08-23-29-21.png)
 ![](../2020-11-08-23-28-45.png)
 
-unsafe.read() 이후 client 요청 데이터를 읽는 것으로 보임(TODO bytebuffer로 읽기는 하는데 어디에 저장하는지는 못찾음)
+unsafe.read() 이후 client 요청 데이터를 읽는 것으로 보임(TODO bytebuffer로 읽기는 하는데 어디에 저장하는지 살펴봐야함.)
 
 ![](../2020-11-08-23-34-55.png)
 
