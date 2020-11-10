@@ -2,7 +2,7 @@
 
 
 # If a command fails then the deploy stops
-set -e
+#set -e
 
 git add .
 
@@ -34,3 +34,4 @@ git commit -m "update"
 
 # Push source and build repos.
 git push origin master --force
+
