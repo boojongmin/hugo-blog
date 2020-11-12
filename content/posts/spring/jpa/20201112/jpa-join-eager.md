@@ -109,8 +109,6 @@ select
 
 의도와 다르게 실제로 true인 것이 조회된 것을 확인할 수 있다.
 
-![](../2020-11-12-21-42-44.png)
-
 동작하는 순서를 보니 
 
 ```
@@ -148,9 +146,11 @@ select
 
 이것을 해결하기 위해 lazy가 아니라 join 쿼리 한번에 가져오면 되겠다는 판단을 하게됨.
 
-핑계를 대자면 요새는 거의 mongo를 써서(얘는 document 단위라 lazy를 할 수가 없음) jpa도 가물가물하고 jpa에서 쿼리를 만들때는 jpql이 아닌 querydsl을 사용했기 때문에 오랜만에 jpql을 쓸려니 가물가물하지만 어찌됐든 querydsl로 실행이 되면 나중에 jpql이 만들어진다는 얘기도 들었던것 같고 암튼 컨셉은 비슷하니 querydsl 한방 쿼리로 가져올때처럼 jpql을 작성해보자라는 생각을 하게됨.
+(핑계를 대자면 요새는 거의 mongo를 써서(얘는 document 단위라 lazy를 할 수가 없음) jpa도 가물가물하고 jpa에서 쿼리를 만들때는 jpql이 아닌 querydsl을 사용했기 때문에 오랜만에 jpql을 쓸려니 가물가물하지만 어찌됐든 querydsl로 실행이 되면 나중에 jpql이 만들어진다는 얘기도 들었던것 같고 암튼 컨셉은 비슷하니 querydsl 한방 쿼리로 가져올때처럼 jpql을 작성해보자라는 생각을 하게됨.)
 
-하지만 당시에는 시간이 없어서 일단 간단한 해결책으로 entity에서 bentity를 가져온후 filter 로직을 넣어서 빼주세요라고 했는데(list.stream().filter(x -> x.del == false).collect(toList()) 대충 이런식...)
+하지만 당시에는 시간이 없어서 일단 간단한 해결책으로 entity에서 bentity를 가져온후 filter 로직을 넣어서 빼주세요라고 했는데
+    
+list.stream().filter(x -> x.del == false) <<=== 대충 이런식...
 
 아무리 생각해도 이건 나이스하지 않아서 찾아보게 되었고 글을 작성하게 되었다.
 
@@ -187,7 +187,9 @@ select
 
 정답은 실제로 쿼리를 날려보면 inner join후 bentity가 row가 2개 이므로 동일한 AEntity정보를 가진 row가 2개 생겨난것이다.
 
-이때 이것을 해결하기 위해서는.
+hibernate 입장에서는 ResultSet에서 for문 돌리면서 AEntity를 생성할때 row 하나마다 AEntity를 만들어 내니 id 값을 1로 같지만 얘 입장에서는 별 생각없이 동일한 id를 갖는 AEntity를 여러번 생성시키고 list에 add했을거다..
+
+아무튼 이것을 해결하기 위해서는.
 
 
 ![](../2020-11-12-22-05-12.png)
