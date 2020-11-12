@@ -1,7 +1,13 @@
 ---
-title: "Jpa Join Fetch(Eager)"
+title: "Jpa Join Fetch(Eager)관련 질문받은 것에 대한 정리"
 date: 2020-11-12T21:21:50+09:00
 ---
+
+
+## 들어가기 앞서.
+글로 정리하기전에 작성한 코드는 https://github.com/boojongmin/boojongmin-samples/tree/master/java/sample-spring-jpa-join-fetch 이 링크에서 확인할 수 있습니다.
+
+
 
 ## 문제상황
 응답 api가 기대하는게 
