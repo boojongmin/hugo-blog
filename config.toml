@@ -5,8 +5,8 @@ title = "기억 저장소"
 theme = "binario"
 paginate = "10" # Number of elements per page in pagination
 disqusShortname = "boojongmin-github-io"      # disqus_shortname
-googleAnalytics = "183053341"      # UA-XXXXXXXX-X
-#googleAnalytics = "G-G3XWW8292Y"      # UA-XXXXXXXX-X
+# googleAnalytics = "183053341"      # UA-XXXXXXXX-X
+googleAnalytics = "G-G3XWW8292Y"      # UA-XXXXXXXX-X
 
 
 [Author] # Used in authorbox
