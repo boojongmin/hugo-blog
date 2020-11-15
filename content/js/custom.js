@@ -5,7 +5,6 @@ s.onload = function() {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-G3XWW8292Y');
-    console.log(data)
 }
 
 document.body.appendChild(s); 
