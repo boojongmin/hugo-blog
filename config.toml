@@ -1,3 +1,96 @@
-languageCode = "ko-KR"
+baseurl = "/"
+languageCode = "en-us"
+defaultContentLanguage = "en-us"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "기억 저장소"
-theme = "hugo-dusk"
+theme = "binario"
+paginate = "10" # Number of elements per page in pagination
+disqusShortname = "boojongmin-github-io"      # disqus_shortname
+googleAnalytics = "G-G3XWW8292Y"      # UA-XXXXXXXX-X
+
+[Author] # Used in authorbox
+  name = "boojongmin"
+  bio = ""
+  avatar = "img/avatar.jpg"
+
+[Params]
+  description = "" # Site Description. Used in meta description
+  copyright = "" # Copyright holder, otherwise will use .Site.Title
+  opengraph = true # Enable OpenGraph if true
+  schema = true # Enable Schema
+  twitter_cards = true # Enable Twitter Cards if true
+  columns = 2 # Set the number of cards columns. Possible values: 1, 2, 3
+  mainSections = ["post"] # Set main page sections
+  dateFormat = "2006-01-02 15:04:05" # Change the format of dates
+  colorTheme = "" # dark-green, dark-blue, dark-red, dark-violet
+  customCSS = [] #["css/custom.css"] # Include custom CSS files
+  customJS = [] #["js/custom.js"] # Include custom JS files
+  mainMenuAlignment = "right" # Align main menu (desktop version) to the right side
+  authorbox = true # Show authorbox at bottom of single pages if true
+  comments = true # Enable comments for all site pages
+  related = true # Enable Related content for single pages
+  relatedMax = 5 # Set the maximum number of elements that can be displayed in related block. Optional
+  mathjax = true # Enable MathJax for all site pages
+  mathjaxPath = "" #"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js" # Specify MathJax path. Optional
+  mathjaxConfig = "" #"TeX-AMS-MML_HTMLorMML" # Specify MathJax config. Optional
+  hideNoPostsWarning = false # Don't show no posts empty state warning in main page, if true
+
+[Params.Entry]
+  meta = ["date", "categories"] # Enable meta fields in given order
+  toc = true # Enable Table of Contents
+  tocOpen = true # Open Table of Contents block. Optional
+
+[Params.Featured]
+  previewOnly = false # Show only preview featured image
+
+[Params.Breadcrumb]
+  enable = true # Enable breadcrumb block globally
+  homeText = "Binario" # Home node text
+
+[Params.Social]
+  email = "boojongmin@gmail.com"
+  #facebook = "boojongmin"
+  #twitter = "username"
+  #telegram = "username"
+  #instagram = "username"
+  #pinterest = "username"
+  #vk = "username"
+  #linkedin = "username"
+  github = "boojongmin"
+  #gitlab = "username"
+  #stackoverflow = "numberid"
+  #mastodon = "https://some.instance/@username"
+  #medium = "username"
+
+[Params.Share] # Entry Share block
+  facebook = true
+  twitter = true
+  reddit = true
+  telegram = true
+  linkedin = true
+  vk = true
+  pocket = true
+  pinterest = true
+
+# Web App Manifest settings
+# https://www.w3.org/TR/appmanifest/
+# https://developers.google.com/web/fundamentals/web-app-manifest/
+[Params.Manifest]
+  name = "부종민"
+  shortName = "부종민"
+  display = "browser"
+  startUrl = "/"
+  backgroundColor = "#2a2a2a"
+  themeColor = "#1b1b1b"
+  description = ""
+  orientation = "portrait"
+  scope = "/"
+
+[outputFormats]
+  [outputFormats.MANIFEST]
+    mediaType = "application/json"
+    baseName = "manifest"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+  home = ["HTML", "RSS", "MANIFEST"]

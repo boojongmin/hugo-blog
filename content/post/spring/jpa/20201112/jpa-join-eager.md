@@ -1,5 +1,5 @@
 ---
-title: "Jpa Join Fetch(Eager)관련 질문받은 것에 대한 정리"
+title: "Jpa Join Fetch 관련 질문받은 것에 대한 정리"
 date: 2020-11-12T21:21:50+09:00
 ---
 
