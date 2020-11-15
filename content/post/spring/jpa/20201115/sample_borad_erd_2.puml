@@ -1,0 +1,27 @@
+@startuml
+hide circle
+
+skinparam linetype ortho
+
+entity "board_group" as e01 {
+  *code varchar(10) pk
+  *name varchar(255)
+}
+
+entity "board_content" as e02 {
+  *board_group_code varchar(10) (fk)
+  ---
+  *id number <<generated>> (pk)
+  *title varchar(255)
+  content text
+}
+
+entity "board_tag" as e03 {
+  *board_content_id number (FK)  
+  *tag varchar(255)
+}
+
+e01 ||..o{ e02
+e02 }o..o| e03
+
+@enduml

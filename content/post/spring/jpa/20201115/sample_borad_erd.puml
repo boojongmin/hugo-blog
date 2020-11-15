@@ -1,0 +1,26 @@
+@startuml
+hide circle
+
+skinparam linetype ortho
+
+entity "게시판_구분" as e01 {
+  *코드
+  *이름
+}
+
+entity "게시판" as e02 {
+  *게시판구분_코드(FK)
+  *ID  
+  *제목
+  *본문
+}
+
+entity "태그" as e03 {
+  *게시판_ID(FK)  
+  *태그명
+}
+
+e01 ||..o{ e02
+e02 }o..o| e03
+
+@enduml
