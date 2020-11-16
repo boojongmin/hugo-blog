@@ -86,11 +86,103 @@ JPA 프로바이더들중에 그렇다고하니 한번 찾아보면
 그럼 이제 내가 하고 싶은 이야기는 `SQL이 익숙해서 그 마음을 알지만 JPA를 대할때는 JPA의 동작 방식에 대해서 학습하고 SQL은 잠시 멀어지세요`이다.
 
 ![](../2020-11-15-20-22-36.png)
+
 ~~이 짤을 쓰기위해 글을 쓰기 시작했던건 아니다~~
 
-자 그러므로 JPA에 
+--
 
-> 애들을 재워야해서 다음편에 중략... 
+자 그럼 JPA는 자바의 데이터를 영속화하고 싶다는 요구사항이니 이 요구사항을 구현하기 위해서는 뭐가 우선적으로 필요할까?
+
+우선 java에는 메모리에 객체는 어짜피 원래 있던것이므로 이 메모리에 있는 객체를 persistence 영역과 sync할 수 있는 무언가가 있으면 끝이다.
+
+이미 위에도 쓰긴했지만 sync할 영속 데이터가 파일이든 nosql이든 뭐가 됐든 상관없지만. EE 기술의 역사적인 이유로 아마도 rdbms만 선택되어진 것 같다. 
+
+그래서 sql이 어떻게 돌아가든 일단 don't care하고 `java객체 rdbms간 동기화`를 하는 방법에 대해서 살펴보도록하자.
+
+먼저 JPA spec의 문서를 살펴보면[^1] `Entity Instance’s Life Cycle`라는 챕터가 있다. 
+
+> (참고)spec 문서는 어려워서 본인도 다 읽지는 못하고 대충 뭐가 있는지만 기억해두는데. 암튼 spec문서를 보면서 깝깝한건 엔티티 인스턴스의 life cycle정도는 그림 한장 넣어주면 어디가 덧나나 싶다. 하이버네이트 문서도 마찬가지...[^2]
+
+일단 시각화 잘되어있는 자료를 이미지 검색을 [hibernate lifecycle](https://www.google.com/search?q=hibernate+lifecycle&sxsrf=ALeKk0286-0wIoI6YsxXkj-MifZSm3z3yA:1605493692825&source=lnms&tbm=isch&sa=X&ved=2ahUKEwioy_-JgobtAhUWM94KHT0CCbIQ_AUoAXoECBcQAw&biw=1920&bih=937#imgrc=-aCOYfqBWa_V7M) 또는 [jpa lifecycle](https://www.google.com/search?q=jpa+lifecycle&tbm=isch&ved=2ahUKEwiCl57igobtAhUMdZQKHWIJDN8Q2-cCegQIABAA&oq=jpa+lifecycle&gs_lcp=CgNpbWcQAzIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeUIkPWNQSYMYTaABwAHgAgAHZAYgBuwSSAQUwLjIuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=deSxX8KINYzq0QTikrD4DQ&bih=937&biw=1920) 이 두 검색어들로 검색을 해보면 제법 많은 양의 설명 글들을 볼수가 있다. 
+
+![](../2020-11-16-11-33-13.png) 
+
+[^3]
+
+위의 이미지에서 보면 hibernate는 내가 만드는 app간에 persistence object가 브릿지처럼 연결되는 것을 볼 수 있다.
+
+![](../2020-11-16-12-23-37.png) 
+
+[^4]
+
+(참고) 이전 그림보다 더 하이버네이트를 디테일하게 설명해주는 그림이 있어서 욕심상 한번 넣어봤다.(이전 이미지만 이해해도 내용에는 무리가 없다.)
+
+
+자 그럼 지금까지의 이미지는 hibernate의 architecture라면 이제는 hibernate의 lifecyle을 시각화한 이미지를 살펴보다.
+
+![](../2020-11-16-11-58-20.png)
+
+[^5]
+
+이 그림에서 중요하게 볼 것은 Transaction이라고 써놓고 영역을 차지한 박스이다. 이 Transaction이라는 영역에서만 db와 java object간에 sync가 이루어진다.
+
+> (잡설)워워... 성미 급하신 보이는데 open session in view는 차후 얘기하기로하자..~~안할예정~~
+
+> (잡설) 은근 저 transaction이라고 써있는 박스에 대해 이해가 없이 코딩을 먼저 하다보니종종 왜 동작을 안하죠하는 질문들을 들음.
+
+transaction 영역을 설명하면 session이라는 영역이 있다. 이미지에서 보면 persistence context인데 요게 EntityManager랑 연관이 깊다. 과거 버저의 스프링 부트를 썼다던가 부트를 쓰지 않는다면 [EntityManager](https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html)를 @PersistenceContext라고 @Autowired 대신 써있는 코드를 보신분들도 제법 있을것이다.
+
+> (참고) query method만 쭉 써본분들은 [Repository](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/Repository.html)만 썼을것이므로 EntityManager를 모르시는분들도 가끔 만난다. 실제로 EntityManager를 사용해서 조작해보면 좀 더 로우레벨을 조작할수 있어서 lifecycle에 대한 이해가 더 쉽다. 뒤에 나오는 lifecycle에서 find, save, update등등 이미지에 나오는 메서드들은 EntityManager가 제공하기 때문이다.
+
+다시 내용을 이어가서 왜 스프링은 @Autowired가 아니라 얘만 특이하게 @PersistenceContext를 썼는지 이해하려면 좀더 길게 할말은 있지만(~~혀가 길면 잘모른다는 얘기~~) 일단 스프링보다 JPA이기 때문 이부분에 대한 내용을 다루지 않고 중요한건 Session(Persistence Context)이라는게 있다는 것이다. transaction안에서 session이 만들어지고 이 session 안에서만 persistence object가 만들어지는 것이다. 즉 이 조건을 만족하면 rdbms에 저장(DML[^8])되는 것이고 저장이 되었으니 나중에 불러올 수(select)도 있는 것이다.
+
+자 그럼 조금더 복잡한 그림을 찾아보았다. 
+
+![](../2020-11-16-12-30-40.png)
+
+[^6]
+
+위의 이미지는 JPA의 EntityManager의 method가 실행되는 hibernate의 lifecycle(또는 상태(state))를 정리한 이미지이다.
+
+> (참고) JPA는 EntityManager hibernate는 [Session](https://docs.jboss.org/hibernate/orm/3.5/javadocs/org/hibernate/Session.html)이다. 둘다 컨셉은 같은데 구현체가 다르다. 
+
+> (참고) 여기서는 JPA와 하이버네이트의 차이점을 모르시는 분들을 위해 JPA는 spec 하이버네이트는 구현체이다. 그런데 jpa 스펙을 구현한 구현체도 있고 hibernate 자체적으로 구현한 구현체도 있다. 그래서 hibernate만 쓸때 JPA 스펙을 구현한 EntityManager를 쓸 수도 있고 hibernate가 구현한 Session을 쓸 수도 있는것이다. 보통 spec은 범용적인 특성상 좀더 기능이 적은편이다. )
+
+> (참고) 구글링을해보면 아래의 이미지처럼 기존에 managed라고 되어있는 state가 persistence라고 써있는 것들도 있어서 찾아보니 hibernate, jpa 둘다 managed란 용어를 공통적으로 사용하고 있으므로 jpa 관련 state 용어로는 persistence란 용어는 쓰지 않겠다.
+
+![](../2020-11-16-12-53-19.png)
+
+[^7]
+
+(위의 이미지는 참고용..)
+
+다시 위의 이미지로 돌아가서 아까 위에서 Transaction/Session 박스 영역이 위의 이미지에서는 Managed state이다. 대략 session에서만 select/DML[^8]이 JPA를 통해 이루어진다. 
+
+![](../2020-11-16-12-30-40.png)
+
+위 이미지를 대략적으로 설명해보면 @Entity가 붙은 class를 "new 생성자()"를 통해 객체를 만들면 일단 `Transient`[^9] 상태이다.(단기체류자란 뜻처럼 영속 상태의 반대 느낌이 든다.) 이 transient 상태에서 `Managed` 상태로 만들기 위해선 persist 메서드를 통해서 이제 JPA가 관리하는 상태가 된다.(이때는 관리이지 객체가 영속화(persistence)되지 않았다.) 이 `Managed`상태의 객체를 영속화하기 위해서는 flush 메서드를 통해 디비에 저장이 된다. 
+
+지금의 flow는 새로운 entity를 디비에 저장하는 절차였다. 
+
+만약 디비에 값이 존재한다면(select 상황) EntityManager의 find를 통해 RDBMS에 있는 정보를 JPA의 @Entity 객체로 바로 읽고 그 @Entity 객체는 JPA에서 관리하는 `Managed` 상태를 가진다. 이제 detached, remove란 이름에서 알 수 있듯이 얘네들은 JPA에서 관리하지 않는 상태로 빼는거고 어쩌다가 한번 detached 상태에서 merge 메서드를 통해 객체를 다시 managed 상태로 바꿔주는 경우도 있다.
+
+> (참고) 스프링 @Transactional이 붙어있으면 자동으로 flush가 이루어진다.
+
+> (참고) 개인적으로는 JPA를 학습할때 이 lifecycle을 먼저 이해하고 @Entity 설계를 학습하는게 좀더 낫지 않나라는 생각을하고 있다.(근데 이것도 상당히 추상적이라 실제 돌아가는 코드를 보지 않고는 이해가 안가므로 닭이 먼저냐 달걀이 먼저냐같은 느낌은 있다.)
+
+
+![](../2020-11-16-12-48-05.png)
+
+[^10] 
+
+> (참고) 여기까지 이해를 했다면 위의 이미지의 hibernate의 first-level cache를 이해하기위한 대략적인 준비는 되었지만 지금 이 이야기를 진행하면 이야기가 산으로 가므로 맥락상 넘어가겠다...~~안하겠다는 얘기~~
+
+
+
+
+자 그럼 JPA(또는 hibernate)의 lifecycle을 살펴봤으니 이를 기반으로 @Entity 설계하는 부분에 대해 이야기를 해보자.(정말 이렇게 글이 길어질줄 몰랐다...시작을 했으니 끝을 봐야지...)
+
+----
 
 
 
@@ -99,3 +191,32 @@ JPA 프로바이더들중에 그렇다고하니 한번 찾아보면
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+### references
+- https://www.jcp.org/en/jsr/detail?id=338
+
+
+### 미주
+
+[^1]: https://github.com/javaee/jpa-spec/raw/master/jsr338-MR/JavaPersistence.pdf
+[^2]: https://docs.jboss.org/hibernate/orm/6.0/userguide/html_single/Hibernate_User_Guide.html#architecture
+[^3]: https://www.youtube.com/watch?v=kE7zBX989QE
+[^4]: https://www.javatpoint.com/hibernate-architecture
+[^5]: https://aishwaryavaishno.wordpress.com/2013/06/07/hibernate-persistent-context-and-objects-lifecycle/
+[^6]: https://vladmihalcea.com/a-beginners-guide-to-jpa-hibernate-entity-state-transitions/
+[^7]: http://what-when-how.com/hibernate/working-with-objects-hibernate/
+[^8]: DML(Data Manipulation Language: 데이터 조작 언어) = INSERT, UPDATE, DELETE SQL
+[^9]: [transient](https://en.dict.naver.com/#/search?range=all&query=transient) = 일시적인, 순간적인, 단기 체류자
+[^10]: https://howtodoinjava.com/hibernate-tutorials/

@@ -16,12 +16,19 @@ entity "board_content" as e02 {
   content text
 }
 
-entity "board_tag" as e03 {
+entity "board_content_tag_mapping" as e03 {
   *board_content_id number (FK)  
+  *tag_id varchar(255)
+}
+
+
+entity "board_tag" as e04 {
+  *tag_id number <<generated>> (pk)
   *tag varchar(255)
 }
 
 e01 ||..o{ e02
-e02 }o..o| e03
+e02 |o.r.o{ e03
+e03 }o.u.o| e04
 
 @enduml
