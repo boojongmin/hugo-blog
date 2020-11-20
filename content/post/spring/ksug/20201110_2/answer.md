@@ -132,5 +132,4 @@ Task ':test' is not up-to-date because:
 
 
 ----
-위에 로그를 보면 `test` task는 맨 마지막에 실행되므로 jar 파일이 만들어지는 것은 당연한 결과였다.
-
+위에 로그를 보면 `test` task는 맨 마지막에 실행되므로 jar 파일이 만들어지는 것은 당연한 결과였다..
