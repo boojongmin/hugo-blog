@@ -1,3 +1,3 @@
 ```shell
-git submodule add https://github.com/boojongmin/boojongmin.github.io.git public
+git submodule add https://github.com/boojongmin/boojongmin.github.io.git deploy
 ```
