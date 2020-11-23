@@ -1,5 +1,5 @@
 ---
-title: "KSUG 20201120 답변 "
+title: "KSUG 20201120 답변 - (xxxParam, xxxVO, xxxModel, xxxDTO, xxxEntity 같은 개념으로 여러개 만들어서 사용하는 것이 조금 비효율적이라는 생각이 들어 글을 올립니다)"
 date: 2020-11-20T14:10:01+09:00
 draft: false
 ---
